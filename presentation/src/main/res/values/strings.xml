@@ -1,0 +1,4 @@
+<resources>
+
+  <string name="format_name_with_region">%s, %s</string>
+</resources>

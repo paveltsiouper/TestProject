@@ -14,4 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "WallmartExample"
 include(":app")
- 
+include(":data")
+include(":presentation")
+include(":domain")

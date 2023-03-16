@@ -1,20 +1,17 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.example.walmart"
+    namespace = "com.example.walmart.data"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.wallmartexample"
         minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -36,7 +33,12 @@ android {
 }
 
 dependencies {
-    implementation(project(":data"))
     implementation(project(":domain"))
-    implementation(project(":presentation"))
+
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:${libs.versions.coroutines.get()}")
+    api("com.google.code.gson:gson:${libs.versions.gson.get()}")
+    api("com.squareup.retrofit2:retrofit:${libs.versions.retrofit.get()}")
+    api("com.squareup.retrofit2:converter-gson:${libs.versions.retrofit.get()}")
+    api("com.squareup.okhttp3:okhttp:${libs.versions.okhttp.get()}")
+    api("com.squareup.okhttp3:logging-interceptor:${libs.versions.okhttp.get()}")
 }
