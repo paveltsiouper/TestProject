@@ -30,15 +30,15 @@ class CountriesViewModel(
         _state.update { it.copy(errorMessage = null) }
     }
 
-    fun retryLoading() {
+    fun reloadList() {
         loadItems()
     }
 
     private fun loadItems() {
+        _state.update { it.copy(loading = true, errorMessage = null) }
         viewModelScope.launch(onError(::handleError) + dispatchers.io()) {
-            _state.update { it.copy(loading = true) }
             val items = repo.getCountries()
-            _state.update { it.copy(loading = false, items = items) }
+            _state.update { it.copy(loading = false, items = items, errorMessage = null) }
         }
     }
 

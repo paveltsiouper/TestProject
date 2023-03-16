@@ -9,14 +9,24 @@
   <androidx.appcompat.widget.Toolbar
       android:id="@+id/action_bar"
       android:layout_width="match_parent"
-      app:title="@string/app_name"
-      android:layout_height="?actionBarSize" />
+      android:layout_height="?actionBarSize"
+      android:background="?colorPrimary"
+      app:titleTextColor="?android:textColorPrimaryInverse"
+      app:title="@string/app_name" />
 
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/country_list_view"
+  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+      android:id="@+id/swipe_refresh_layout"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-      tools:listitem="@layout/country_item" />
+      android:background="?colorSurface"
+      android:layout_height="wrap_content">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/country_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/country_item" />
+
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>
